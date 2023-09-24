@@ -4,8 +4,6 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/deckhouse/gost-image-digest/pkg/imagedigest"
 
 	"github.com/google/go-containerregistry/pkg/crane"
@@ -27,7 +25,7 @@ var addCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal().Err(err).Msg("AddGostImageDigest")
 		}
-		fmt.Println("Added successfully")
+		log.Info().Msg("Added successfully")
 	},
 }
 

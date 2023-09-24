@@ -50,7 +50,7 @@ func AddGostImageDigest(imageName string, opts ...crane.Option) error {
 	if err != nil {
 		return err
 	}
-	fmt.Printf("GOST Image Digest: %s\n", hex.EncodeToString(gostImageDigest))
+	log.Info().Msgf("GOST Image Digest: %s", hex.EncodeToString(gostImageDigest))
 	return updateImageInRegistry(
 		imageName,
 		image,
@@ -71,13 +71,13 @@ func ValidateGostImageDigest(imageName string, opts ...crane.Option) error {
 		return fmt.Errorf("The image %s does not contain Gost Image Digest", imageName)
 	}
 
-	fmt.Printf("GOST Image Digest from image %s\n", im.ImageGostDigest)
+	log.Info().Msgf("GOST Image Digest from image %s", im.ImageGostDigest)
 
 	gostImageDigest, err := calculateLayersGostDigest(im)
 	if err != nil {
 		return err
 	}
-	fmt.Printf("Calculated GOST Image Digest %s\n", hex.EncodeToString(gostImageDigest))
+	log.Info().Msgf("Calculated GOST Image Digest %s", hex.EncodeToString(gostImageDigest))
 
 	return compareImageGostHash(im, gostImageDigest)
 }

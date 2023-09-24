@@ -4,8 +4,6 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/deckhouse/gost-image-digest/pkg/imagedigest"
 
 	"github.com/google/go-containerregistry/pkg/crane"
@@ -29,21 +27,21 @@ var validateCmd = &cobra.Command{
 		if err != nil {
 			log.Error().Err(err).Msg("ValidateGostImageDigest")
 			if fixGostDigest {
-				fmt.Println("Fix GOST Image Digest")
+				log.Info().Msg("Fix GOST Image Digest")
 				err := imagedigest.AddGostImageDigest(args[0], opts...)
 				if err != nil {
 					log.Fatal().Err(err).Msg("AddGostImageDigest")
 				}
-				fmt.Println("Added successfully")
+				log.Info().Msg("Added successfully")
 				return
 			}
 			return
 		}
-		fmt.Println("Validate successfully")
+		log.Info().Msg("Validate successfully")
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(validateCmd)
-	validateCmd.Flags().BoolVarP(&fixGostDigest, "fix", "", false, "Fix Gost Image Digest")
+	validateCmd.Flags().BoolVarP(&fixGostDigest, "fix", "", false, "Fix Gost Image Digest if it is incorrect")
 }

@@ -7,10 +7,12 @@ import (
 	"os"
 
 	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
 var (
+	ojson    bool
 	debug    bool
 	insecure bool
 )
@@ -21,6 +23,9 @@ var rootCmd = &cobra.Command{
 	Long:  ``,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		zerolog.SetGlobalLevel(zerolog.InfoLevel)
+		if !ojson {
+			log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stdout})
+		}
 		if debug {
 			zerolog.SetGlobalLevel(zerolog.DebugLevel)
 		}
@@ -36,5 +41,6 @@ func Execute() {
 
 func init() {
 	rootCmd.PersistentFlags().BoolVarP(&debug, "debug", "d", false, "Debug")
+	rootCmd.PersistentFlags().BoolVarP(&ojson, "json", "", false, "Using Json formater for output logs")
 	rootCmd.PersistentFlags().BoolVarP(&insecure, "insecure", "i", false, "ignore TLS verify")
 }

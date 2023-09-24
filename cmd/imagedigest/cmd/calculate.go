@@ -5,7 +5,6 @@ package cmd
 
 import (
 	"encoding/hex"
-	"fmt"
 
 	"github.com/deckhouse/gost-image-digest/pkg/imagedigest"
 
@@ -28,7 +27,7 @@ var calculateCmd = &cobra.Command{
 		if err != nil {
 			log.Fatal().Err(err).Msg("CalculateGostImageDigest")
 		}
-		fmt.Printf("GOST Image Digest: %s\n", hex.EncodeToString(gostImageDigest))
+		log.Info().Msgf("GOST Image Digest: %s\n", hex.EncodeToString(gostImageDigest))
 	},
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.MinimumNArgs(1)(cmd, args); err != nil {

@@ -16,8 +16,8 @@ import (
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "Calculate and add GOST Image Digest",
-	Long:  `Calculate and add GOST Image Digest`,
+	Short: "Calculating and adding the image digest to the image metadata according to the GOST standard Streebog (GOST R 34.11-2012)",
+	Long:  `Calculating and adding the image digest to the image metadata according to the GOST standard Streebog (GOST R 34.11-2012)`,
 	Run: func(cmd *cobra.Command, args []string) {
 		opts := []crane.Option{}
 		if insecure {

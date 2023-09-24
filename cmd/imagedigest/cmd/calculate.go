@@ -17,8 +17,8 @@ import (
 // calculateCmd represents the calculate command
 var calculateCmd = &cobra.Command{
 	Use:   "calculate",
-	Short: "Calculate a gost image digest",
-	Long:  `Calculate a gost image digest`,
+	Short: "Calculating the image digest according to the GOST standard Streebog (GOST R 34.11-2012)",
+	Long:  `Calculating the image digest according to the GOST standard Streebog (GOST R 34.11-2012)`,
 	Run: func(cmd *cobra.Command, args []string) {
 		opts := []crane.Option{}
 		if insecure {

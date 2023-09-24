@@ -18,8 +18,8 @@ var fixGostDigest bool
 // validateCmd represents the validate command
 var validateCmd = &cobra.Command{
 	Use:   "validate",
-	Short: "Validate GOST Image Digest",
-	Long:  ``,
+	Short: "Validating the image digest in the image metadata calculated according to the GOST standard Streebog (GOST R 34.11-2012)",
+	Long:  `Validating the image digest in the image metadata calculated according to the GOST standard Streebog (GOST R 34.11-2012)`,
 	Run: func(cmd *cobra.Command, args []string) {
 		opts := []crane.Option{}
 		if insecure {

@@ -16,9 +16,9 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "image-gost-digest",
-	Short: "Add a gost image digest",
-	Long:  `Add a gost image digest to an image in registry`,
+	Use:   "imagedigest",
+	Short: "",
+	Long:  ``,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		zerolog.SetGlobalLevel(zerolog.InfoLevel)
 		if debug {
@@ -35,7 +35,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.PersistentFlags().BoolVarP(&debug, "debug", "d", false, "Debug")
 	rootCmd.PersistentFlags().BoolVarP(&insecure, "insecure", "i", false, "ignore TLS verify")
 }

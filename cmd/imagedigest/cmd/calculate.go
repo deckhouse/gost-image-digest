@@ -6,7 +6,8 @@ package cmd
 import (
 	"encoding/hex"
 	"fmt"
-	"gost-image-digest/imagedigest"
+
+	"github.com/deckhouse/gost-image-digest/pkg/imagedigest"
 
 	"github.com/google/go-containerregistry/pkg/crane"
 	"github.com/rs/zerolog/log"

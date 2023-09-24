@@ -1,4 +1,4 @@
-module gost-image-digest
+module github.com/deckhouse/gost-image-digest
 
 go 1.20
 

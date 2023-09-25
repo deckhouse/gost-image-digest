@@ -1,0 +1,28 @@
+---
+configVersion: 1
+project: gost-image-digest
+---
+artifact: gost-image-digest/build-artifact
+from: golang:1.20.4-alpine3.18
+platform:
+- linux/amd64
+git:
+- add: /
+  to: /src
+shell:
+  install:
+  - cd /src
+  - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w' -o imagedigest cmd/imagedigest/main.go
+---
+image: gost-image-digest
+from: alpine:3.18
+platform:
+- linux/amd64
+import:
+- artifact: gost-image-digest/build-artifact
+  add: /src/imagedigest
+  to: /imagedigest
+  before: setup
+docker:
+  ENTRYPOINT: ["/imagedigest"]
+---

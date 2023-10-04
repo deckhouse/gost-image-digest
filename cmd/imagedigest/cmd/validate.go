@@ -39,6 +39,12 @@ var validateCmd = &cobra.Command{
 		}
 		log.Info().Msg("Validate successfully")
 	},
+	Args: func(cmd *cobra.Command, args []string) error {
+		if err := cobra.MinimumNArgs(1)(cmd, args); err != nil {
+			return err
+		}
+		return nil
+	},
 }
 
 func init() {

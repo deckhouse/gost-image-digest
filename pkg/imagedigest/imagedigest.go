@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	gostDigestAnnotationKey = "gost-digest"
+	gostDigestAnnotationKey = "deckhouse.io/gost-digest"
 	registryTimeout         = 30 * time.Minute
 )
 

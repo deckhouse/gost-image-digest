@@ -11,8 +11,7 @@ import (
 func Calculate(reader io.Reader) ([]byte, error) {
 	data, err := io.ReadAll(reader)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(1)
+		return nil, err
 	}
 
 	hasher := gost34112012256.New()

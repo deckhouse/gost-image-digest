@@ -18,8 +18,6 @@ func Calculate(reader io.Reader) ([]byte, error) {
 	_, err = hasher.Write(data)
 	if err != nil {
 		return nil, err
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(2)
 	}
 
 	return hasher.Sum(nil), nil

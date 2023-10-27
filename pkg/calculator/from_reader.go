@@ -1,9 +1,7 @@
 package calculator
 
 import (
-	"fmt"
 	"io"
-	"os"
 
 	"go.cypherpunks.ru/gogost/v5/gost34112012256"
 )
